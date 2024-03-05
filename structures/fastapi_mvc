@@ -1,0 +1,13 @@
+%s/
+|__ app/
+|    |__ __init__.py
+|    |__ models/
+|    |   |__ __init__.py
+|    |__ controllers/
+|    |   |__ __init__.py
+|    |__ routers/
+|    |   |__ __init__.py
+|    |__ clients/
+|    |   |__ __init__.py
+|__ main.py
+|__ README.md

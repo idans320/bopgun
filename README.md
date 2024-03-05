@@ -1,6 +1,6 @@
 # Bopgun
 
-![Bopgun Banner](banner.png | width=100)
+![Bopgun Banner](banner.png)
 
 ## Introduction
 

@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby
+
 require 'thor'
-require_relative './commands/structure'
+require_relative '../commands/structure'
 
 $pwd = Dir.pwd
 
 current_dir = __dir__
-Dir.chdir(current_dir)
+
+Dir.chdir(File.join(current_dir,'../'))
 
 class Structure < Thor
   include StructureCommand

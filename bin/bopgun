@@ -2,24 +2,37 @@
 
 require 'thor'
 require_relative '../commands/structure'
+require_relative '../commands/dump_sql'
 
 $pwd = Dir.pwd
 
 current_dir = __dir__
 
-Dir.chdir(File.join(current_dir','../'))
+Dir.chdir(File.join(current_dir, '../'))
 
 class Structure < Thor
   include StructureCommand
-  desc 'new NAME', PROJECT_NAME'', 'Create a directory strucutre under a certain project name'
-  def new(name', project_name)
-    create(name', project_name', $pwd)
+  desc 'new NAME, PROJECT_NAME', 'Create a directory strucutre under a certain project name'
+  def new(name, project_name)
+    create(name, project_name, $pwd)
+  end
+end
+
+class DumpSql < Thor
+  include DumpSqlCommand
+  desc 'dump FILE, MODULE_NAME, OUT_FILE', 'Get a sql file and dump it into another langauge orm class'
+  def dump(file, module_name, out_file)
+    dump_command(file, module_name, out_file, $pwd)
   end
 end
 
 class BopGun < Thor
-  desc 'bopgun structure'', 'create a project structure'
-  subcommand 'structure'', Structure
+  desc 'bopgun structure', 'create a project structure'
+  subcommand 'structure', Structure
+
+  desc 'bopgun dumpsql', 'dump sql file'
+  subcommand 'dumpsql', DumpSql
+
   def self.exit_on_failure?
     true
   end

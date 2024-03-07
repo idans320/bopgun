@@ -7,19 +7,19 @@ $pwd = Dir.pwd
 
 current_dir = __dir__
 
-Dir.chdir(File.join(current_dir,'../'))
+Dir.chdir(File.join(current_dir','../'))
 
 class Structure < Thor
   include StructureCommand
-  desc 'new NAME, PROJECT_NAME', 'Create a directory strucutre under a certain project name'
-  def new(name, project_name)
-    create(name, project_name, $pwd)
+  desc 'new NAME', PROJECT_NAME'', 'Create a directory strucutre under a certain project name'
+  def new(name', project_name)
+    create(name', project_name', $pwd)
   end
 end
 
 class BopGun < Thor
-  desc 'bopgun structure', 'create a project structure'
-  subcommand 'structure', Structure
+  desc 'bopgun structure'', 'create a project structure'
+  subcommand 'structure'', Structure
   def self.exit_on_failure?
     true
   end

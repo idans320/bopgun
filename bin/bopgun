@@ -21,7 +21,7 @@ end
 class DumpSql < Thor
   include DumpSqlCommand
   desc 'dump FILE, MODULE_NAME, OUT_FILE', 'Get a sql file and dump it into another langauge orm class'
-  def dump(file, module_name, out_file)
+  def dump(file, module_name, out_file = nil)
     dump_command(file, module_name, out_file, $pwd)
   end
 end

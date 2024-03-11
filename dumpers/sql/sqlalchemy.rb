@@ -42,7 +42,7 @@ module SqlAlchemy
         str += "\n\t#{key} = Column(#{@@types[:"#{type.downcase}"]}, nullable = #{nullable.to_s.capitalize})"
       end
       str += "\n"
-      str
+      [table_name, 'py', str]
     end
   end
 end

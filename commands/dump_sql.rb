@@ -18,9 +18,11 @@ module DumpSqlCommand
 
     throw error('Module does not exist') unless parser_module
     content = File.read(file_path)
-    parsed = parser_module.parse(tokenize_sql(content))
+    table_name, extention, parsed = parser_module.parse(tokenize_sql(content))
 
-    is_relative_out = Pathname.new(file).relative?
+    out_file.nil? && out_file = "#{table_name}.#{extention}"
+
+    is_relative_out = Pathname.new(out_file).relative?
     file_path_out = is_relative_out ? File.join(pwd, out_file) : out_file
 
     File.write(file_path_out, parsed)

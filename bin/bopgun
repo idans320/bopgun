@@ -16,6 +16,10 @@ class Structure < Thor
   def new(name, project_name)
     create(name, project_name, $pwd)
   end
+  desc 'list', 'List all available structures'
+  def list
+    list_structures
+  end
 end
 
 class DumpSql < Thor

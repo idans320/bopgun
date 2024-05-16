@@ -10,6 +10,11 @@ module StructureCommand
     parse_structure_token(tokenize_structure((p File.read(file_name) % project_name)))
   end
 
+  def list_structures
+    files = Dir.entries('structures') - %w[. ..]
+    puts files
+  end
+
   def create(name, project_name, pwd)
     project_dir =  File.join pwd, project_name
     throw error('Project already exists') if Dir.exist? project_dir

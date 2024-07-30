@@ -3,6 +3,7 @@
 require 'thor'
 require_relative '../commands/structure'
 require_relative '../commands/dump_sql'
+require_relative '../commands/template'
 
 $pwd = Dir.pwd
 
@@ -22,6 +23,18 @@ class Structure < Thor
   end
 end
 
+class Template < Thor
+  include TemplateCommand
+  desc 'new NAME, FILE_NAME, ARGS..', 'Create a directory strucutre under a certain project name'
+  def new(name, file_name, *args)
+    create_template(args, name, file_name, $pwd)
+  end
+  desc 'list', 'List all available structures'
+  def list
+    list_templates
+  end
+end
+
 class DumpSql < Thor
   include DumpSqlCommand
   desc 'dump FILE, MODULE_NAME, OUT_FILE', 'Get a sql file and dump it into another langauge orm class'
@@ -36,6 +49,9 @@ class BopGun < Thor
 
   desc 'bopgun dumpsql', 'dump sql file'
   subcommand 'dumpsql', DumpSql
+
+  desc 'bopgun template', 'create new file from template'
+  subcommand 'template', Template
 
   def self.exit_on_failure?
     true
